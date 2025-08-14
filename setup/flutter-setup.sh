@@ -3,9 +3,22 @@
 
 echo "Setting up Flutter project..."
 
-# Ensure we're in the workspace directory
-WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
-cd "$WORKSPACE_DIR"
+# Detect if we're in Codespaces or local environment
+if [ -d "/workspaces" ]; then
+    # Codespace environment
+    WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
+    cd "$WORKSPACE_DIR"
+else
+    # Local environment - use current directory or parent
+    if [ -f "setup/flutter-setup.sh" ]; then
+        # We're in the project root
+        WORKSPACE_DIR="$(pwd)"
+    else
+        # We might be in a subdirectory
+        cd ..
+        WORKSPACE_DIR="$(pwd)"
+    fi
+fi
 
 # Add Flutter to PATH
 export PATH="$PATH:/usr/local/flutter/bin"

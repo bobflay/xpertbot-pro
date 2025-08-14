@@ -44,7 +44,11 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 # Node.js 20 comes with compatible npm version
 
 # Change to workspace directory (handles any repo name)
-cd /workspaces/*/ || cd /workspaces/$(ls /workspaces | head -1)
+if [ -d "/workspaces" ]; then
+    cd /workspaces/*/ || cd /workspaces/$(ls /workspaces | head -1)
+else
+    echo "Not in Codespace environment, using current directory"
+fi
 
 # Verify we're in the right directory
 echo "Current directory: $(pwd)"

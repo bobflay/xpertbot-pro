@@ -3,9 +3,22 @@
 
 echo "Starting development services..."
 
-# Detect workspace directory dynamically
-WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
-cd "$WORKSPACE_DIR"
+# Detect if we're in Codespaces or local environment
+if [ -d "/workspaces" ]; then
+    # Codespace environment
+    WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
+    cd "$WORKSPACE_DIR"
+else
+    # Local environment - use current directory or parent
+    if [ -f "setup/start-services.sh" ]; then
+        # We're in the project root
+        WORKSPACE_DIR="$(pwd)"
+    else
+        # We might be in a subdirectory
+        cd ..
+        WORKSPACE_DIR="$(pwd)"
+    fi
+fi
 
 # Add Flutter to PATH if not already added
 export PATH="$PATH:/usr/local/flutter/bin"

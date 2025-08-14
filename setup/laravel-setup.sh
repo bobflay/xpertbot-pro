@@ -3,9 +3,22 @@
 
 echo "🚀 Setting up Laravel API..."
 
-# Ensure we're in the workspace directory
-WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
-cd "$WORKSPACE_DIR"
+# Detect if we're in Codespaces or local environment
+if [ -d "/workspaces" ]; then
+    # Codespace environment
+    WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
+    cd "$WORKSPACE_DIR"
+else
+    # Local environment - use current directory or parent
+    if [ -f "setup/laravel-setup.sh" ]; then
+        # We're in the project root
+        WORKSPACE_DIR="$(pwd)"
+    else
+        # We might be in a subdirectory
+        cd ..
+        WORKSPACE_DIR="$(pwd)"
+    fi
+fi
 
 # Check if Laravel project already exists
 if [ -d "laravel-api" ]; then
@@ -31,7 +44,7 @@ php artisan key:generate
 
 # Configure SQLite database
 sed -i 's/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/' .env
-sed -i 's|DB_DATABASE=laravel|DB_DATABASE=/workspaces/xpertbot-pro-template/laravel-api/database/database.sqlite|' .env
+sed -i "s|DB_DATABASE=laravel|DB_DATABASE=$WORKSPACE_DIR/laravel-api/database/database.sqlite|" .env
 touch database/database.sqlite
 
 # Setup Sanctum for API authentication
