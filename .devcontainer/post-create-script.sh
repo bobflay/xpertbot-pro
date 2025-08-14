@@ -54,20 +54,20 @@ fi
 echo "Current directory: $(pwd)"
 echo "Contents: $(ls -la)"
 
-# Setup Laravel Project
-echo "🏗️ Creating Laravel Project..."
-if [ -f "setup/laravel-setup.sh" ]; then
-    bash setup/laravel-setup.sh
+# Install Laravel Dependencies
+echo "🏗️ Installing Laravel dependencies..."
+if [ -f "setup/laravel-dependencies.sh" ]; then
+    bash setup/laravel-dependencies.sh
 else
-    echo "Warning: setup/laravel-setup.sh not found"
+    echo "Warning: setup/laravel-dependencies.sh not found"
 fi
 
-# Setup Flutter Project
-echo "📱 Creating Flutter Project..."
-if [ -f "setup/flutter-setup.sh" ]; then
-    bash setup/flutter-setup.sh
+# Install Flutter Dependencies
+echo "📱 Installing Flutter dependencies..."
+if [ -f "setup/flutter-dependencies.sh" ]; then
+    bash setup/flutter-dependencies.sh
 else
-    echo "Warning: setup/flutter-setup.sh not found"
+    echo "Warning: setup/flutter-dependencies.sh not found"
 fi
 
 # Install Claude CLI (if available)

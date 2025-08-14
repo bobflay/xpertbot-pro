@@ -30,7 +30,7 @@ if [ -d "laravel-api" ]; then
     php artisan serve --host=0.0.0.0 --port=8000 &
     cd ..
 else
-    echo "Laravel API not found. Run setup/laravel-setup.sh first."
+    echo "Laravel API not found. Run setup/laravel-dependencies.sh first."
 fi
 
 # Check if Flutter project exists and start it
@@ -40,7 +40,7 @@ if [ -d "flutter-app" ]; then
     flutter run -d web-server --web-hostname=0.0.0.0 --web-port=3000 &
     cd ..
 else
-    echo "Flutter app not found. Run setup/flutter-setup.sh first."
+    echo "Flutter app not found. Run setup/flutter-dependencies.sh first."
 fi
 
 echo "Services startup initiated!"
