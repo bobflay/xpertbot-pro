@@ -32,8 +32,9 @@ sudo tar xf flutter_linux_3.16.0-stable.tar.xz -C /usr/local/
 sudo chown -R vscode:vscode /usr/local/flutter
 echo 'export PATH="$PATH:/usr/local/flutter/bin"' >> ~/.bashrc
 
-# Add Flutter to current session
+# Add Flutter to current session and persistent PATH
 export PATH="$PATH:/usr/local/flutter/bin"
+echo 'export PATH="$PATH:/usr/local/flutter/bin"' >> ~/.profile
 
 # Install Laravel Installer
 echo "🎵 Installing Laravel..."

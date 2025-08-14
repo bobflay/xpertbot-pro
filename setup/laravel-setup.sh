@@ -3,6 +3,16 @@
 
 echo "🚀 Setting up Laravel API..."
 
+# Ensure we're in the workspace directory
+WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
+cd "$WORKSPACE_DIR"
+
+# Check if Laravel project already exists
+if [ -d "laravel-api" ]; then
+    echo "Laravel API directory already exists. Skipping creation."
+    exit 0
+fi
+
 # Create Laravel project
 composer create-project laravel/laravel laravel-api
 cd laravel-api

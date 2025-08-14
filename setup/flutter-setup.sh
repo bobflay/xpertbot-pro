@@ -3,6 +3,19 @@
 
 echo "Setting up Flutter project..."
 
+# Ensure we're in the workspace directory
+WORKSPACE_DIR="/workspaces/$(ls /workspaces | head -1)"
+cd "$WORKSPACE_DIR"
+
+# Add Flutter to PATH
+export PATH="$PATH:/usr/local/flutter/bin"
+
+# Check if Flutter project already exists
+if [ -d "flutter-app" ]; then
+    echo "Flutter app directory already exists. Skipping creation."
+    exit 0
+fi
+
 # Create Flutter project
 flutter create flutter-app
 cd flutter-app
