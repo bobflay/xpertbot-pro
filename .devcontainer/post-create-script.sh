@@ -40,8 +40,7 @@ echo "🎵 Installing Laravel..."
 composer global require laravel/installer
 echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
-# Install Node.js dependencies for Laravel Mix
-npm install -g npm@latest
+# Node.js 20 comes with compatible npm version
 
 # Setup Laravel Project
 echo "🏗️ Creating Laravel Project with Nova..."
