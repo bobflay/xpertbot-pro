@@ -27,14 +27,19 @@ sudo chmod +x /usr/local/bin/composer
 # Install Flutter
 echo "🦋 Installing Flutter..."
 cd /tmp
-wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.0-stable.tar.xz
-sudo tar xf flutter_linux_3.16.0-stable.tar.xz -C /usr/local/
+wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.3-stable.tar.xz
+sudo tar xf flutter_linux_3.24.3-stable.tar.xz -C /usr/local/
 sudo chown -R vscode:vscode /usr/local/flutter
-echo 'export PATH="$PATH:/usr/local/flutter/bin"' >> ~/.bashrc
 
-# Add Flutter to current session and persistent PATH
-export PATH="$PATH:/usr/local/flutter/bin"
+# Add Flutter to PATH for all sessions
+echo 'export PATH="$PATH:/usr/local/flutter/bin"' >> ~/.bashrc
 echo 'export PATH="$PATH:/usr/local/flutter/bin"' >> ~/.profile
+
+# Add Flutter to current session
+export PATH="$PATH:/usr/local/flutter/bin"
+
+# Verify Flutter installation
+flutter --version
 
 # Install Laravel Installer
 echo "🎵 Installing Laravel..."

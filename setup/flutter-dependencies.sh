@@ -23,6 +23,16 @@ fi
 # Add Flutter to PATH
 export PATH="$PATH:/usr/local/flutter/bin"
 
+# Verify Flutter is installed
+if ! command -v flutter &> /dev/null; then
+    echo "Flutter not found in PATH. Make sure Flutter is installed."
+    exit 1
+fi
+
+# Check Flutter version
+echo "Flutter version:"
+flutter --version
+
 # Check if Flutter project exists
 if [ ! -d "flutter-app" ]; then
     echo "Flutter app directory not found. Something went wrong with the template."
