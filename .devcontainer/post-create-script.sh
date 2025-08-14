@@ -42,6 +42,9 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
 # Node.js 20 comes with compatible npm version
 
+# Change to workspace directory
+cd /workspaces/xpertbot-pro-template
+
 # Setup Laravel Project
 echo "🏗️ Creating Laravel Project with Nova..."
 bash setup/laravel-setup.sh
