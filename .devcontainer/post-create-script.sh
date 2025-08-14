@@ -42,20 +42,36 @@ echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
 # Node.js 20 comes with compatible npm version
 
-# Change to workspace directory
-cd /workspaces/xpertbot-pro-template
+# Change to workspace directory (handles any repo name)
+cd /workspaces/*/ || cd /workspaces/$(ls /workspaces | head -1)
+
+# Verify we're in the right directory
+echo "Current directory: $(pwd)"
+echo "Contents: $(ls -la)"
 
 # Setup Laravel Project
-echo "🏗️ Creating Laravel Project with Nova..."
-bash setup/laravel-setup.sh
+echo "🏗️ Creating Laravel Project..."
+if [ -f "setup/laravel-setup.sh" ]; then
+    bash setup/laravel-setup.sh
+else
+    echo "Warning: setup/laravel-setup.sh not found"
+fi
 
 # Setup Flutter Project
 echo "📱 Creating Flutter Project..."
-bash setup/flutter-setup.sh
+if [ -f "setup/flutter-setup.sh" ]; then
+    bash setup/flutter-setup.sh
+else
+    echo "Warning: setup/flutter-setup.sh not found"
+fi
 
 # Install Claude CLI (if available)
 echo "🤖 Setting up Claude integration..."
-bash setup/claude-setup.sh
+if [ -f "setup/claude-setup.sh" ]; then
+    bash setup/claude-setup.sh
+else
+    echo "Warning: setup/claude-setup.sh not found"
+fi
 
 # Set permissions
 sudo chown -R vscode:vscode /workspaces
