@@ -17,8 +17,8 @@
 ### **Week 2: Backend Development**
 - **Backend Development**: Server-side logic and architecture
 - **Databases**: Data storage and relationships
-- **Laravel Nova**: Admin panel and data management
 - **API Development**: Building and testing APIs
+- **Admin Panels**: Data management interfaces (Nova optional)
 
 ### **Week 3: Mobile Development**
 - **Flutter**: Cross-platform mobile development
@@ -89,9 +89,9 @@ Your environment comes ready with:
 
 After your Codespace launches:
 
-- [ ] **Check Laravel API**: Visit `/nova` to see the admin panel
+- [ ] **Check Laravel API**: Visit `/api/products` to see the API response
 - [ ] **Test Flutter App**: Open the mobile app preview
-- [ ] **Verify Communication**: Create a product in Nova, see it in the mobile app
+- [ ] **Verify Communication**: Use the API to create products and see them in the app
 - [ ] **Explore Code**: Browse the project structure in VS Code
 - [ ] **Ask Claude**: Use AI assistance for any questions
 
@@ -102,11 +102,14 @@ After your Codespace launches:
 Your applications will be available at automatically generated URLs:
 
 ```
-🔧 Laravel API & Nova Admin:
-https://[your-codespace]-8000.app.github.dev
+🔧 Laravel API:
+https://[your-codespace]-8000.app.github.dev/api
 
 📱 Flutter Mobile App:
 https://[your-codespace]-3000.app.github.dev
+
+📊 Nova Admin (if installed):
+https://[your-codespace]-8000.app.github.dev/nova
 ```
 
 > **Note**: The actual URLs will be provided in your terminal once the environment starts.
