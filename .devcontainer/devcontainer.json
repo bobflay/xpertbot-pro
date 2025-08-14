@@ -1,0 +1,50 @@
+{
+  "name": "XpertBot Pro Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "MehediDracula.php-namespace-resolver",
+        "dart-code.dart-code",
+        "dart-code.flutter",
+        "ms-vscode.vscode-json",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "dart.flutterSdkPath": "/usr/local/flutter",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [8000, 3000, 5173, 8080],
+  "portsAttributes": {
+    "8000": {
+      "label": "Laravel API",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Flutter Web",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create-script.sh",
+  "postStartCommand": "bash setup/start-services.sh",
+
+  "remoteUser": "vscode"
+}
